@@ -17,6 +17,40 @@ module.exports = {
         let randomFortune = fortunes[randomIndex];
       
         res.status(200).send(randomFortune);
-    }
+    },
+    getInspiration: (req, res) => {
+        const inspiration = {
+            happy: "Choose to be happy today and spread positivity!",
+            motivated: "Believe in yourself, and you can achieve anything!",
+            stressed: "Take a deep breath and focus on one thing at a time.",
+            sad: "It's okay to have bad days; tomorrow will be better."
+        };
 
+        const selectedMood = req.body.mood;
+        
+        if (selectedMood === 'happy') {
+            res.status(200).send(inspiration.happy);
+        }
+        else if (selectedMood === 'motivated') {
+                res.status(200).send(inspiration.motivated);
+        } 
+        else if (selectedMood === 'stressed') {
+            res.status(200).send(inspiration.stressed);
+        }
+        else if (selectedMood === 'sad') {
+            res.status(200).send(inspiration.sad);
+            
+        }
+        else if (selectedMood === 'sad') {
+            res.status(200).send(inspiration.sad);
+        }
+        else {
+            res.status(400).send("Content unavailable");
+        }
+    },
+    getUserPost: (req, res) => {
+        const userContent = req.body.userContent
+        res.status(200).send(`Received user input: ${userContent}`)
+    }
+    
 }
